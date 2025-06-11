@@ -47,6 +47,13 @@ describe('flattenArr', () => {
     expect(flattenArr(input)).toEqual(expectedOutput);
   });
 
+  it('handles arrays with mixed types (including empty arrays)', () => {
+    const input = [1, 2, 3, [4, 5, [6, 7, []]], 'not a number'];
+    const expectedOutput = [1, 2, 3, 4, 5, 6, 7, 'not a number'];
+
+    expect(flattenArr(input)).toEqual(expectedOutput);
+  });
+
   // TO DO: Add submethod for removing duplicates and sorting
   // Does not remove duplicates
   // it('removes duplicates', () => {
@@ -83,6 +90,20 @@ describe('dataFetcher', () => {
     }
   });
 });
+
+// TODO: Add test for getClientRegionAndCountry
+// // Get client region and country from IP address
+// describe('getClientRegionAndCountry', () => {
+//   it('returns the region code and country', async () => {
+//     axios.get.mockImplementation(() => Promise.resolve({ data: { region_code: 'US', country: 'United States' } }));
+
+//     try {
+//       await getClientRegionAndCountry();
+//     } catch (e) {
+//       expect(e).toEqual(new Error({ error: 'Boom', message: 'An Error Occurred' }));
+//     }
+//   });
+// });
 
 describe('sortList', () => {
   it('calls a sorter function if it is available', () => {
