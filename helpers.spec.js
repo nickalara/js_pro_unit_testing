@@ -22,7 +22,46 @@ describe('flattenArr', () => {
     const expectedOutput = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
     expect(flattenArr(input)).toEqual(expectedOutput);
+    expect(flattenArr(input)).toHaveLength(expectedOutput.length);
   });
+
+  it('flattens multiple nested arrays', () => {
+    const input = [1, 2, 3, [4, 5, [6, 7, [8, [9, [10]]]]], [11, 12, 13, [14, 15, [16, 17, [18, [19, [20]]]]]]];
+    const expectedOutput = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+
+    expect(flattenArr(input)).toEqual(expectedOutput);
+    expect(flattenArr(input)).toHaveLength(expectedOutput.length);
+  });
+
+  it('does not accept a string', () => {
+    const input = 'not an array';
+    const expectedOutput = 'Input must be an array.';
+
+    expect(flattenArr(input)).toEqual(expectedOutput);
+  });
+
+  it('does not accept a number', () => {
+    const input = 123;
+    const expectedOutput = 'Input must be an array.';
+
+    expect(flattenArr(input)).toEqual(expectedOutput);
+  });
+
+  // TO DO: Add submethod for removing duplicates and sorting
+  // Does not remove duplicates
+  // it('removes duplicates', () => {
+  //   const input = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2];
+  //   const expectedOutput = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  //   expect(flattenArr(input)).toEqual(expectedOutput);
+  // });
+
+  // Does not sort the returned array
+  // it('sorts an array', () => {
+  //   const input = [1, 2, 5, [4, 3, [6, 7, [8, [9, [10]]]]]];
+  //   const expectedOutput = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+  //   expect(flattenArr(input)).toEqual(expectedOutput);
+  // });
 });
 
 describe('dataFetcher', () => {

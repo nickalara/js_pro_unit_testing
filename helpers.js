@@ -6,8 +6,8 @@ const axios = require('axios');
  * @returns {array} ex: [1,2,3,4,5]
  */
 const flattenArr = (arr) => {
+  if (!Array.isArray(arr)) return 'Input must be an array.';
   const retVal = [];
-
   const helper = (val) => {
     for (let i = 0; i < val.length; i++) {
       if (Array.isArray(val[i])) {
@@ -56,6 +56,7 @@ const sortList = (arr, sortFn) => {
  * @param {number} num
  * @returns {string} ex: $3.99
  */
+// TODO: fix this test
 const formatCurrency = (num) => {
   if (isNaN(num)) return '$0.00';
 
@@ -67,7 +68,7 @@ const formatCurrency = (num) => {
  * @param {array} tasks an array of promises ex: [new Promise((res, rej) => res())]
  * @returns {array} of resolved promises or an error
  */
-
+// TODO: fix this test
 const handlePromises = async (tasks = []) => {
   try {
     const [...data] = await Promise.all(tasks);
