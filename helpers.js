@@ -36,12 +36,16 @@ const dataFetcher = async () => {
   }
 };
 
-// TODO: Add getClientRegionAndCountry
+// // TODO: Add getClientRegionAndCountry
 // // get client region and country from IP address
 // const getClientRegionAndCountry = async () => {
-//   const regionCode = await axios.get('https://ipapi.co/region_code/');
-//   const country = await axios.get('https://ipapi.co/country/');
-//   return { regionCode, country };
+//   try {
+//     const regionCode = await axios.get('https://ipapi.co/region_code/');
+//     const country = await axios.get('https://ipapi.co/country/');
+//     return { regionCode, country };
+//   } catch (e) {
+//     throw new Error({ error: e, message: 'Unexpected Result' });
+//   }
 // };
 
 /**
